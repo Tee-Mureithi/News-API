@@ -1,38 +1,50 @@
-from sre_parse import CATEGORIES
-from main import app
+from flask import Flask
+from newsapi import NewsApiClient
 
-import urllib.request,json
+def get_sources():
+    
+    api_key = 'd7c232fa9d04483fab91df5c9c445326'
+    
+    newsapi = NewsApiClient(api_key=api_key)
 
-from .models import news
+    top_headlines = newsapi.get_top_headlines(sources = "bbc-news")
+    all_articles = newsapi.get_everything(sources = "bbc-news")
 
-#getting api key
+    t_articles = top_headlines['articles']
+    a_articles = all_articles['articles']
 
-api_key = app.config['NEWS_API_URL']
+    news = []
+    desc = []
+    img = []
+    p_date = []
+    url = []
 
-#Getting the news base url
+    for i in range (len(t_articles)):
+        main_article = t_articles[i]
 
-base_url = app.config["NEWS_API_BASE_URL"]
+        news.append(main_article['title'])
+        desc.append(main_article['description'])
+        img.append(main_article['urlToImage'])
+        p_date.append(main_article['publishedAt'])
+        url.append(main_article['url'])
 
+        contents = zip( news,desc,img,p_date,url)
 
-def get_news(category) :
+    news_all = []
+    desc_all = []
+    img_all = []
+    p_date_all = []   
+    url_all = []
 
-    '''
-    Function that gets the json response to our  url request
+    for j in range(len(a_articles)): 
+        main_all_articles = a_articles[j]   
 
-    '''
+        news_all.append(main_all_articles['title'])
+        desc_all.append(main_all_articles['description'])
+        img_all.append(main_all_articles['urlToImage'])
+        p_date_all.append(main_all_articles['publishedAt'])
+        url_all.append(main_article['url'])
+        
+        all = zip( news_all,desc_all,img_all,p_date_all,url_all)
 
-    get_news_url = base_url.format(CATEGORIES,api_key)
-
-    with urllib.request.urlopen(get_news_url) as url:
-
-       get_news_data = url.read()
-       get_news_response = json.loads(get_news_data)
-
-       news_results = None
-
-       if get_news_response['results']:
-           news_results_list= get_news_response['results']
-           news_results = process_results(news_results_list)
-
-    return news_results 
-de
+    return render_template('home.html',contents=contents,all = all)
