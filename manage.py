@@ -21,7 +21,7 @@ def Index():
         news.append(myarticles['title'])
         desc.append(myarticles['description'])
         img.append(myarticles['urlToImage'])
-        url.append(myarticles)['url']
+        url.append(myarticles['url'])
 
     mylist = zip(news, desc, img)
 
@@ -58,3 +58,13 @@ def bbc():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+# from flask import Flask, render_template
+# from app import app
+
+# app= Flask (__name__)
+
+# if __name__ == '___main__':
+#     app.run(debug=True)
