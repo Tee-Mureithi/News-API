@@ -1,14 +1,18 @@
-from flask import render_template
+from importlib.resources import contents
+from flask import render_template,request,redirect,url_for
+from ..requests import main_all_articles , main_article
+from . import main
 
-from main import app
 
-@app.route('/')
 
+@main.route('/')
 def index():
+        news_all.append(main_all_articles['title'])
+        desc_all.append(main_all_articles['description'])
+        img_all.append(main_all_articles['urlToImage'])
+        p_date_all.append(main_all_articles['publishedAt'])
+        url_all.append(main_article['url'])
+        
+        all = zip( news_all,desc_all,img_all,p_date_all,url_all)
 
-    '''
-    View root page function that returns the index page and its data
-    '''
-
-    title = 'Home - Welcome to The best Movie Review website'
-    return render_template('index.html', title = title)
+        return render_template('index.html',contents=contents,all = all)
