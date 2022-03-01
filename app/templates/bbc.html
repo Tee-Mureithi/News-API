@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask BBC News</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="jumbotron" style="color:black">
+
+    <h1 style="color:black">
+
+         News Web Application 📺
+        <a href="{{url_for('bbc')}}"><button class="bt btn-danger">BBC</button></a>
+       
+        <a href="{{url_for('index')}}"><button class="bt btn-warning">Aljazeera</button></a>
+        
+        <button class="bt btn-success">FOX NEWS</button>
+        <button class="bt btn-info">CNN</button>
+    </h1>
+
+</div>
+<div class="card-columns embed-responsive responsive">
+    {% for new, des, i in context %}
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{i}}" alt="Card image">
+                <div class="card-body">
+                  <h5 class="card-title"> {{new}}</h5>
+                  <p class="card-text">Description: {{des}}</p>
+                </div>
+              </div>
+
+            {% endfor %}
+</div>
+
+
+
+
+</body>
+</html>
