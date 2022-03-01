@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="{{url_for('static', filename='img/logo.png')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav style="background-color:rgb(32, 223, 127)!important">
+        <a href="/" class="logo"><h2 >Flask News 📸</h2></a>
+        <ul class= "menu">
+          <a href="{{url_for('bbc')}}"><li class="bt btn-danger">BBC<li/></a>
+            <li class="nav-items"><a href='/'>Aljazeera</a></li>
+            <li class="nav-items"><a href='/'>Fox News</a></li>
+        </ul>
+    </nav>
+<section id="main">
+  
+    {% for title,desc,img,p_date,url in contents %}
+    <div class="wrapper">
+        <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+        <div class = "c-box">
+        <div class="content"><a href="{{url}}"><h2 style="color:rgb(32, 223, 127)!important" >{{title}}</h2></a></div>
+        <div class="content"><a href="{{url}}"><p>{{desc}}</p></a></div>
+        <div class="content"><p style="color:rgb(32, 223, 127);">Publish Date:- </p><p>{{p_date}}</p></div>
+        </div>
+        </div> 
+    {% endfor %}  
+    
+    <div class = "head">TODAY'S NEWS</div>
+    {% for title,desc,img,p_date,url in all %}
+    <div class="wrapper">
+        <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+        <div class = "c-box">
+        <div class="content"><a href="{{url}}"><h2>{{title}}</h2></a></div>
+        <div class="content"><p>{{desc}}</p></div>
+        <div class="content"><p style="color:rgb(77, 255, 0);">Publish Date:- </p><p> {{p_date}} </p></div>
+        </div>
+        </div> 
+    {% endfor %}
+</section>
+<footer style="background-color:rgb(32, 223, 127)!important" >
+<div class="head-f" style="background-color:rgb(32, 223, 127)!important" ><h2> Copyright &copy; Tee Mureithi</h2></div>
+</footer>
+</body>
+</html>
