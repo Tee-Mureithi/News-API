@@ -16,7 +16,7 @@ The program redirects the user to the News article's source site for the full st
 * Flask
 
 ## Setup/Installation Requirements
-* https://github.com/FITSTARGILLY2643/News-App
+* https://github.com/Tee-Mureithi/News-API.git
 * download the zip file
 * unzip it on your documents folder
 * open the folder on your preferred text/code editor
@@ -31,4 +31,4 @@ The program redirects the user to the News article's source site for the full st
 Reach me on +254 725 060 098 0r fitstargilii1194@gmail.com
 ### License
 MIT
-Copyright (c) 2021 **Gilbert Kiprotich**
+Copyright (c) 2021 **Esther Mureithi**
