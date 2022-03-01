@@ -3,8 +3,8 @@
 This is an application that picks news from various sources on News Api and displays the news. The news is categorized according to source.
 ## BDD
 The program lets a user pick a source from the various categories
-* Example input: CNN News
-* Example output: displays news from CNN News only
+* Example input: BNN News
+* Example output: displays news from BNN News only
 
 The program redirects the user to the News article's source site for the full story
 * Example input: Read More
