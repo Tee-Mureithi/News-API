@@ -1,8 +1,9 @@
 import urllib.request,json
 from .models import Source,Article
-import ssl
+from flask.templating import render_template
+# import ssl
 
-ssl._create_default_https_context = ssl._create_unverified_context
+# ssl._create_default_https_context = ssl._create_unverified_context
 
 Source = Source
 
