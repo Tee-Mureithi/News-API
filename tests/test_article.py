@@ -1,27 +1,15 @@
 import unittest
-
-from Models import news
-
-News = news.News
+from app import Article
 
 class ArticleTest(unittest.TestCase):
-
     '''
-
-    Test Class to test the behaviour of the movie 
-    
+    Test Class to test the behaviour of the Source class
     '''
-
     def setUp(self):
-
         '''
-        Setup method that will run before every Test
+        Set up method that will run before every Test
         '''
-        self.new_news = News()
+        self.new_article = Article('Test author','Test title','Test description','Test url','Test image','Test publishedAt')
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_news,News))
-
-if __name__ == '__main__' :
-
-    unittest.main()
+        self.assertTrue(isinstance(self.new_article,Article))
