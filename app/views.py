@@ -1,5 +1,5 @@
 from app import app
-from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 from flask import Flask,render_template
 
 @app.route('/')
