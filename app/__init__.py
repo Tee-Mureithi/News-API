@@ -1,4 +1,11 @@
+
 from flask import Flask
+
+from app import app
+
+import sys
+sys.path.append('./')
+
 from config import config_options
 from flask_bootstrap import Bootstrap
 
@@ -6,7 +13,7 @@ from flask_bootstrap import Bootstrap
 bootstrap =Bootstrap()
 
 # initializing application
-def create_app(config_name):
+def create_app (config_name):
     app = Flask(__name__)
 
 
@@ -18,10 +25,10 @@ def create_app(config_name):
     bootstrap.init_app(app)
 
     # blueprint registration
-    from .main import main as main_blueprint
+    from  main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    from .requests import configure_request
+    from requests import configure_request
     configure_request(app)
 
     return app
