@@ -1,34 +1,8 @@
 
 from flask import Flask
-
-from app import app
-
-import sys
-sys.path.append('./')
-
-from config import config_options
-from flask_bootstrap import Bootstrap
+from flask import current_app
 
 
-bootstrap =Bootstrap()
+app = Flask(__name__)
 
-# initializing application
-def create_app (config_name):
-    app = Flask(__name__)
-
-
-
-    # setting up configuration
-    app.config.from_object(config_options[config_name])
-
-    # initializing bootstrap
-    bootstrap.init_app(app)
-
-    # blueprint registration
-    from  main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
-
-    from requests import configure_request
-    configure_request(app)
-
-    return app
+from app import views

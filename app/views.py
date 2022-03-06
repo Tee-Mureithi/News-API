@@ -1,4 +1,4 @@
-from . import app
+from app import app
 from newsapi.newsapi_client import NewsApiClient
 from flask import Flask,render_template
 
